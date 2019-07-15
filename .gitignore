@@ -2,7 +2,7 @@ HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 /pet-clinic-data/target/
-/pet-clinic-web/target
+/pet-clinic-web/target/
 
 ### STS ###
 .apt_generated
