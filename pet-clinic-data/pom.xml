@@ -3,7 +3,7 @@
 	<parent>
     	<groupId>pet-clinic</groupId>
     	<artifactId>spring-pet-clinic</artifactId>
-    	<version>0.0.2-SNAPSHOT</version>
+    	<version>0.0.1</version>
 	</parent>
 	<artifactId>pet-clinic-data</artifactId>
 	

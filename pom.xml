@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>pet-clinic</groupId>
 	<artifactId>spring-pet-clinic</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<modules>
 		<module>pet-clinic-data</module>
 		<module>pet-clinic-web</module>
@@ -38,6 +38,7 @@
         		<configuration>
         			<configuration>
         				<goals>install</goals>
+        				<autoVersionSubmodules>true</autoVersionSubmodules>
         			</configuration>
         		</configuration>
 			</plugin>
@@ -46,7 +47,6 @@
 	
 	<scm>
 		<developerConnection>scm:git:https://github.com/federicocao94/spring-pet-clinic.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+  	</scm>
 
 </project>
