@@ -15,7 +15,6 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 	private final SpecialityService specialityService;
 	
 	public VetServiceMap(SpecialityService specialityService) {
-		super();
 		this.specialityService = specialityService;
 	}
 	
