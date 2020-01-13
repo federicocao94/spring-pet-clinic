@@ -10,10 +10,12 @@ import petclinic.model.Pet;
 import petclinic.model.PetType;
 import petclinic.model.Speciality;
 import petclinic.model.Vet;
+import petclinic.model.Visit;
 import petclinic.services.OwnerService;
 import petclinic.services.PetTypeService;
 import petclinic.services.SpecialityService;
 import petclinic.services.VetService;
+import petclinic.services.VisitService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -26,15 +28,20 @@ public class DataLoader implements CommandLineRunner {
 	
 	private final SpecialityService specialityService;
 	
+	private final VisitService visitService;
+	
 
 	public DataLoader(OwnerService ownerService, 
 			VetService vetService,
 			PetTypeService petTypeService,
-			SpecialityService specialityService) {
+			SpecialityService specialityService,
+			VisitService visitService) {
+		
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialityService = specialityService;
+		this.visitService = visitService;
 	}
 	
 
@@ -105,6 +112,14 @@ public class DataLoader implements CommandLineRunner {
 		ownerService.save(owner2);
 		
 		System.out.println("Loaded owners");
+		
+		
+		Visit catVisit = new Visit();
+		catVisit.setPet(fionasPet);
+		catVisit.setDate(LocalDate.now());
+		catVisit.setDescription("Sneezy kitty");
+		
+		visitService.save(catVisit);
 		
 		
 		Vet vet1 = new Vet();
