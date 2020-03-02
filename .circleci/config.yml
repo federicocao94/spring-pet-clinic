@@ -30,8 +30,10 @@ jobs:
               # fallback to using the latest cache if no exact match is found
               - v1-dependencies-
 
-        #- run: mvn install -DskipTests
+        #maven installs the modules, this solves dependencies between web and data
+        - run: mvn install -DskipTests
 
+        #maven goes offline, the dependencies have been downloaded
         - run: mvn dependency:go-offline
 
         - save_cache:
@@ -39,5 +41,5 @@ jobs:
               - ~/.m2
               key: v1-dependencies-{{ checksum "pom.xml" }}
 
-        # run tests!
+        # run tests
         - run: mvn integration-test
