@@ -1,5 +1,7 @@
 package petclinic.repositories;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import petclinic.model.Owner;
@@ -7,4 +9,6 @@ import petclinic.model.Owner;
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
 
 	Owner findByLastName(String lastName);
+	
+	List<Owner> findAllByLastNameLike(String lastName);
 }

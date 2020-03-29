@@ -1,6 +1,8 @@
 package petclinic.services.map;
 
 import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -76,6 +78,16 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 			.filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
 			.findFirst()
 			.orElse(null);
+	}
+	
+	@Override
+	public List<Owner> findAllByLastNameLike(String lastName) {
+		List<Owner> ownersList = this.findAll()
+				.stream()
+				.filter(owner -> owner.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+				.collect(Collectors.toList());
+		
+		return ownersList;
 	}
 
 }
