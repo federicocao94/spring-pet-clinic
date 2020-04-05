@@ -22,7 +22,7 @@ import petclinic.services.OwnerService;
 @Controller
 public class OwnerController {
 	
-	private String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
+	private final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 	
 	private final OwnerService ownerService;
 	
@@ -40,7 +40,6 @@ public class OwnerController {
 	
 	@RequestMapping("/find")
 	public String findOwners(Model model) {
-		
 		model.addAttribute("owner", Owner.builder().build());
 		
 		return "owners/findOwners";
@@ -76,8 +75,8 @@ public class OwnerController {
 	
 	@GetMapping("/{ownerId}")
 	public ModelAndView showOwner(@PathVariable Long ownerId) {
-		
 		ModelAndView mav = new ModelAndView("owners/ownerDetails");
+		
 		mav.addObject(ownerService.findById(ownerId));
 		
 		return mav;
@@ -86,7 +85,6 @@ public class OwnerController {
 	
 	@GetMapping("/new")
 	public String initCreationForm(Model model) {
-		
 		model.addAttribute("owner", Owner.builder().build());
 		
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
@@ -109,7 +107,6 @@ public class OwnerController {
 	@GetMapping("/{ownerId}/edit")
 	public String initUpdateOwnerForm(@PathVariable Long ownerId, 
 			Model model) {
-		
 		model.addAttribute("owner", ownerService.findById(ownerId));
 		
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;

@@ -39,7 +39,7 @@ class OwnerControllerTest {
 	OwnerService ownerService;
 	
 	@InjectMocks
-	OwnerController controller;
+	OwnerController ownerController;
 	
 	MockMvc mockMvc;
 	
@@ -52,7 +52,7 @@ class OwnerControllerTest {
 		owners.add(Owner.builder().id(1L).build());
 		owners.add(Owner.builder().id(2L).build());
 		
-		mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(ownerController).build();
 	}
 
 	

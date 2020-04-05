@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
@@ -42,7 +41,31 @@ public class Owner extends Person {
 		this.address = address;
 		this.city = city;
 		this.telephone = telephone;
-		this.pets = pets;
+		
+		if(pets != null) { //If pets = null it doesn't override the hashset
+			this.pets = pets;
+		}
+	}
+	
+	
+	/**
+	 * Return the pet with the given name or null if not found
+	 * @param name
+	 * @param ignoreNew ignore the pet if new
+	 * @return the pet
+	 */
+	public Pet getPet(String name, boolean ignoreNew) {
+		name = name.toLowerCase();
+		
+		for(Pet pet : pets) {
+			if(!ignoreNew || !pet.isNew()) {
+				if(pet.getName().toLowerCase().equals(name)) {
+					return pet;
+				}
+			}
+		}
+		
+		return null;
 	}
 	
 }
