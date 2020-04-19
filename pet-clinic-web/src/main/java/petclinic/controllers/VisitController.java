@@ -57,12 +57,14 @@ public class VisitController {
 
 	
 	@PostMapping("/visits/new")
-	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
+	public String processNewVisitForm(@Valid Visit visit, 
+			Pet pet,
+			BindingResult result) {
 		if (result.hasErrors()) {
 			return "pets/createOrUpdateVisitForm";
 		}
 		
 		visitService.save(visit);
-		return "redirect:/owners/{ownerId}";
+		return "redirect:/owners/" + pet.getOwner().getId();
 	}
 }
